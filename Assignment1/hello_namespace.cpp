@@ -1,3 +1,8 @@
+/// @file hello_namespace.cpp
+/// @brief A simple program using namespace std.
+/// @author Austin Simpson
+
+
 #include <iostream>
 #include <string>
 

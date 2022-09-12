@@ -1,3 +1,7 @@
+/// @file hello_namespace_2.cpp
+/// @brief A simple program using cin and cout
+/// @author Austin Simpson
+
 #include <iostream>
 #include <string>
 using namespace std;
