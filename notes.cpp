@@ -21,52 +21,34 @@ void printInfo(int nu, int k);
 
 int main()
 {
-    // variables
-    int nu = 0;
-    int k = 0;
-    double frequency;
-    double wavelength;
-
     // print the table
     cout << endl;
     cout << "Reference Frequency: " << C0 << " Hz" << endl;
     cout << "Speed of Sound: " << SPEED_OF_SOUND << " m/s" << endl;
     
     // Note: C0
-    nu = 0;
-    k = 0;
     cout << "Note:  C0;  ";
-    printInfo(nu, k);
+    printInfo(0, 0);
 
-    // Note: C#0
-    nu = 0;
-    k = 1;
+    // Note: C#0  // nu = 0;  // k = 1;
     cout << "Note: C#0;  ";
-    printInfo(nu, k);
+    printInfo(0, 1);
 
-    // Note: D0
-    nu = 0;
-    k = 2;
+    // Note: D0  // nu = 0; // k = 2;
     cout << "Note:  D0;  ";
-    printInfo(nu, k);
+    printInfo(0, 2);
 
-    // Note: C4
-    nu = 4;
-    k = 0;
+    // Note: C4  // nu = 4; // k = 0;
     cout << "Note:  C4;  ";
-    printInfo(nu, k);
+    printInfo(4, 0);
 
-    // Note: D#7
-    nu = 7;
-    k = 3;
+    // Note: D#7  // nu = 7; // k = 3;
     cout << "Note: D#7;  ";
-    printInfo(nu, k);
+    printInfo(7, 3);
 
-    // Note: C8
-    nu = 8;
-    k = 0;
+    // Note: C8  // nu = 8; // k = 0;
     cout << "Note:  C8;  ";
-    printInfo(nu, k);
+    printInfo(8, 0);
 
     cout << endl;
     return 0;
