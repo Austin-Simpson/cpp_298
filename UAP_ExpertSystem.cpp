@@ -412,7 +412,7 @@ int main()
 		std::cout << "Do you wish to analyze another UAP Event (y/n)?" << std::endl;
 		char cUserResponse = 'n';
 		std::cin >> cUserResponse;
-		if(cUserResponse == 'y')
+		if(tolower(cUserResponse) == 'y')
 		{
 		   bUserWishesToContinue = true;
 		}else if(cUserResponse == 'n'){
