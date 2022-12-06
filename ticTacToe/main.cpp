@@ -1,6 +1,9 @@
 #include <iostream>
+#include <random>
+#include <ctime>
 
 using namespace std;
+
 
 class TicTacToe
 {
@@ -13,6 +16,7 @@ public:
     void aiMove();
     bool isGameOver();
     void gameOver();
+    ~TicTacToe();
 
 private:
     char** board;
@@ -55,7 +59,7 @@ void TicTacToe::generateBoard()
     }
 }
 
-~TicTacToe()
+TicTacToe::~TicTacToe()
 {
     for (int i = 0; i < 3; i++)
     {
@@ -77,7 +81,7 @@ void TicTacToe::printBoard()
 }
 
 
-bool TicTacToe::isValidMove(int row, int col)
+bool TicTacToe::isValidMove(int &row, int &col)
 {
     if (row > 2 || row < 0 || col > 2 || col < 0)
     {
@@ -113,16 +117,30 @@ void TicTacToe::getMove()
     }
 
     board[row][col] = 'X';
-
+    
+    printBoard();
     if (isGameOver() && result == -1)
     {
+        cout << "You Win! " << endl;
         result = 1;
+        return;
     }
 
     aiMove();
     if (isGameOver() && result == -1)
     {
+        cout << "AI Wins! " << endl;
         result = 2;
+        return;
+    }
+    else if (isGameOver() && result == 0)
+    {
+        cout << "Tie! " << endl;
+        return;
+    }
+    else
+    {
+        return;
     }
 }
 
@@ -140,26 +158,28 @@ void TicTacToe::aiMove()
         }
     }
 
+    cout << "AI move: " << row << ", " << col << endl;
     board[row][col] = 'O';
+    printBoard();
 }
 
 bool TicTacToe::isGameOver()
 {
-    if (board[0][0] == board[0][1] && board[0][1] == board[0][2] && board
+    if (board[0][0] == board[0][1] && board[0][1] == board[0][2] && board[0][0] != '~'
         ||
-        board[1][0] == board[1][1] && board[1][1] == board[1][2] && board
+        board[1][0] == board[1][1] && board[1][1] == board[1][2] && board[1][0] != '~'
         ||
-        board[2][0] == board[2][1] && board[2][1] == board[2][2] && board
+        board[2][0] == board[2][1] && board[2][1] == board[2][2] && board[2][0] != '~'
         ||
-        board[0][0] == board[1][0] && board[1][0] == board[2][0] && board
+        board[0][0] == board[1][0] && board[1][0] == board[2][0] && board[0][0] != '~'
         ||
-        board[0][1] == board[1][1] && board[1][1] == board[2][1] && board
+        board[0][1] == board[1][1] && board[1][1] == board[2][1] && board[0][1] != '~'
         ||
-        board[0][2] == board[1][2] && board[1][2] == board[2][2] && board
+        board[0][2] == board[1][2] && board[1][2] == board[2][2] && board[0][2] != '~'
         ||
-        board[0][0] == board[1][1] && board[1][1] == board[2][2] && board
+        board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != '~'
         ||
-        board[0][2] == board[1][1] && board[1][1] == board[2][0] && board)
+        board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != '~')
     {
         return true;
     }
@@ -176,19 +196,20 @@ bool TicTacToe::isGameOver()
             }
         }
         result = 0;
+        cout << "Tie!";
         return true;
     }
 }
 
 int main()
 {
+    srand(time(NULL));
     TicTacToe *game = new TicTacToe();    
     game->printBoard();
     
     while(!game->isGameOver())
     {
         game->getMove();
-        game->printBoard();
     }
 
     return 0;
