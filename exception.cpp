@@ -23,7 +23,10 @@ unsigned long sigma(unsigned long n)
     {
         if(n < 1)
         {
-            throw std::runtime_error("n < 1");
+            std::string strMessage = "Precondition n > 0 violated: n: " + std::to_string(n) + "; (Loc: " + __FILE__ + ", " + std::to_string(__LINE__) + ")";;
+
+            throw std::runtime_error(strMessage); 
+
         }
 
         for (int i = 1; i <= n; i++)
